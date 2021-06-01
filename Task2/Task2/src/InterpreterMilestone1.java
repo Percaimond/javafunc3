@@ -16,19 +16,19 @@ public class InterpreterMilestone1 {
 
      public static void helpermethod(){
        List<String> output = new ArrayList<>();
-        String code = "var x; var y; var z; var q; z = 567; x = z; y = 323; q = 12; x = q; print(x); print(y); print(z); print(q);";
+       String code = "var x; var y; var z; var q; z = 567; x = z; y = 323; q = 12; x = q; print(x); print(y); print(z); print(q);";
          //String code = "var x; var y; var z; z = 567; x = z; y = 323; x = y; print(x); print(y); print(z);";
-
          String regex = "[a-z][a-z]*\\s=\\s([a-z][a-z]*|[0-9][0-9]*);";
 
          final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
         final Matcher matcher = pattern.matcher(code);
 
-        List<String> assignments = new ArrayList<>();
-        List<String> valueOfAssignment = new ArrayList<>();
-        List<String> variableName = new ArrayList<>();
-        List<String> printStatements = new ArrayList<>();
-        HashMap<String,String> pairsOfAssignment = new HashMap<>();
+        List<String> assignments = new ArrayList<>();//Hashmap for the assignments
+        List<String> valueOfAssignment = new ArrayList<>();//Hashmap for the values of the assignments
+        List<String> variableName = new ArrayList<>();//Hashmap for the names of the variables
+        List<String> printStatements = new ArrayList<>();//Hashmap for the print values
+        HashMap<String,String> pairsOfAssignment = new HashMap<>();//Hashmap for the assignment pairs
+
         while (matcher.find()) {
             System.out.println(matcher.group(0));
             System.out.println(matcher.group(1));
