@@ -16,7 +16,7 @@ public class TestInterpreterMilestone2 {
 
         TinyPLParser.ProgramContext tree = Util.parseCode(code.toString());
         InterpreterMilestone2 interpreter = new InterpreterMilestone2(tree);
-        List<String> output = interpreter.run();
+        List<String> output = interpreter.run(code.toString());
         assertEquals(1, output.size());
         assertEquals("7", output.get(0));
     }
@@ -37,7 +37,7 @@ public class TestInterpreterMilestone2 {
 
         TinyPLParser.ProgramContext tree = Util.parseCode(code.toString());
         InterpreterMilestone2 interpreter = new InterpreterMilestone2(tree);
-        List<String> output = interpreter.run();
+        List<String> output = interpreter.run(code.toString());
         assertEquals(3, output.size());
         assertEquals("99", output.get(0));
         assertEquals("567", output.get(1));
@@ -61,7 +61,7 @@ public class TestInterpreterMilestone2 {
 
         TinyPLParser.ProgramContext tree = Util.parseCode(code.toString());
         InterpreterMilestone2 interpreter = new InterpreterMilestone2(tree);
-        List<String> output = interpreter.run();
+        List<String> output = interpreter.run(code.toString());
         assertEquals(1, output.size());
         assertEquals("55", output.get(0));
     }

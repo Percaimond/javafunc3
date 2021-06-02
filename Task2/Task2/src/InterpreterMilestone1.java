@@ -76,13 +76,13 @@ public class InterpreterMilestone1 {
         System.out.println(output);
         }
 
-    //public List<String> run(String code) {
-    public List<String> run() {//without parameter
+    public List<String> run(String code) {
+    //public List<String> run() {//without parameter
         List<String> output = new ArrayList<>();
 
         String regex = "[a-z][a-z]*\\s=\\s([a-z][a-z]*|[0-9][0-9]*);";
 
-        String code = tree.toStringTree();
+        //String code = tree.toStringTree();
         final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
         final Matcher matcher = pattern.matcher(code);
 
