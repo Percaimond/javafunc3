@@ -76,12 +76,13 @@ public class InterpreterMilestone1 {
         System.out.println(output);
         }
 
-
-    public List<String> run(String code) {//without parameter
+    //public List<String> run(String code) {
+    public List<String> run() {//without parameter
         List<String> output = new ArrayList<>();
 
         String regex = "[a-z][a-z]*\\s=\\s([a-z][a-z]*|[0-9][0-9]*);";
 
+        String code = tree.toStringTree();
         final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
         final Matcher matcher = pattern.matcher(code);
 
@@ -90,30 +91,32 @@ public class InterpreterMilestone1 {
         List<String> variableName = new ArrayList<>();
         List<String> printStatements = new ArrayList<>();
         HashMap<String,String> pairsOfAssignment = new HashMap<>();
+
         while (matcher.find()) {
             System.out.println(matcher.group(0));
             System.out.println(matcher.group(1));
             assignments.add(matcher.group(0));
-            for (int i = 0; i <= matcher.groupCount(); i++) {
+            for (int i = 1; i <= matcher.groupCount(); i++) {
 
-            String firstWord = matcher.group(0).replaceAll(" .*", "");
-            variableName.add(firstWord);
-            System.out.println(firstWord);
+                String firstWord = matcher.group(0).replaceAll(" .*", "");
+                variableName.add(firstWord);
+                System.out.println(firstWord);
             }
-
-            for(int j = variableName.size(); j <= 0 ; j--){
-                if(variableName.contains(matcher.group(1))) {//if the variable is already in the assignment list
-                    valueOfAssignment.add(valueOfAssignment.get(j));//somehow need value of this variable===)?
-                    System.out.println("Value of assignment " + ": " + matcher.group(j));
-                    break;
-                } else {
-                    valueOfAssignment.add(matcher.group(1));//else just assign the right value
-                    System.out.println("Value of assignment " + ": " + matcher.group(j));
-                    break;
+            if (!variableName.contains(matcher.group(1))) {
+                valueOfAssignment.add(matcher.group(1));//else just assign the right value
+                System.out.println("Value of assignment " + ": " + matcher.group(1));
+            } else {
+                for (int j = variableName.size()-2; j >= 0; j--) {
+                    //if the variable is already in the assignment list
+                        valueOfAssignment.add(valueOfAssignment.get(j));//somehow need value of this variable===)?
+                        System.out.println("Value of assignment " + ": " + valueOfAssignment.get(j));
+                        break;
+                    //break;
                 }
             }
-
         }
+
+
 
         for(int i = 0; i<variableName.size();i++){
             pairsOfAssignment.put(variableName.get(i),valueOfAssignment.get(i));
