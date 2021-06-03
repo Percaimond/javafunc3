@@ -79,4 +79,18 @@ public class TestInterpreterMilestone1 {
         assertEquals("123", output.get(3));
         assertEquals("123",   output.get(4));
     }
+    @Test
+    public void testProgram7(){
+        String code = "var x; var y; var z; var q; var o; z = 123; o = 2; print(o); x = z; y = z; q = z; print(x); print(y); print(z); print(q);";
+        TinyPLParser.ProgramContext tree = Util.parseCode(code);
+        InterpreterMilestone1 interpreter = new InterpreterMilestone1(tree);
+        List<String> output = interpreter.run(code);//wrong without code
+        //List<String> output = interpreter.run();
+        assertEquals(5, output.size());
+        assertEquals("2", output.get(0));
+        assertEquals("123", output.get(1));
+        assertEquals("123", output.get(2));
+        assertEquals("123", output.get(3));
+        assertEquals("123", output.get(4));
+    }
 }
