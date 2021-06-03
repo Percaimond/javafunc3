@@ -9,11 +9,11 @@ import static org.antlr.v4.runtime.CharStreams.fromFileName;
 import org.antlr.v4.runtime.*;
 
 
-public class InterpreterMilestone2 {
+public class InterpreterMilestoneOrig2 {
 
     private TinyPLParser.ProgramContext tree;
 
-    public InterpreterMilestone2(TinyPLParser.ProgramContext tree) {
+    public InterpreterMilestoneOrig2(TinyPLParser.ProgramContext tree) {
         this.tree = tree;
     }
 
