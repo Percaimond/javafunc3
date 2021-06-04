@@ -1,10 +1,12 @@
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class InterpreterMilestone3 {
+public class InterpreterMilestone3 extends TinyPLCustomListener2{
 
     private TinyPLParser.ProgramContext tree;
 
@@ -13,8 +15,14 @@ public class InterpreterMilestone3 {
     }
 
     public List<String> run() {
-        //public List<String> run() {//without parameter
         List<String> output = new ArrayList<>();
+        outputvalues.clear();
+        TinyPLCustomListener2 listener = new TinyPLCustomListener2();
+        ParseTreeWalker walker = new ParseTreeWalker();
+        walker.walk(listener,tree);
+
+        output = outputvalues;
+
         return output;
 
     }
