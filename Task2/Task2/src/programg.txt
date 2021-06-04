@@ -1,0 +1,11 @@
+function a {
+var x;
+x = 55;
+b();
+}
+function b {
+print(x);
+}
+var x;
+x = 1;
+a();

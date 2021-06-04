@@ -1,0 +1,11 @@
+function callme {
+var inner;
+inner = 567;
+print(outer);
+print(inner);
+}
+var outer;
+outer = 99;
+callme();
+print(outer);
+
